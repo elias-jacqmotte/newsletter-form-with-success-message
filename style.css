@@ -1,0 +1,319 @@
+/* ---------------------------- */
+/*             RESET            */
+/* ---------------------------- */
+
+/* https://piccalil.li/blog/a-modern-css-reset/ */
+
+/* Box sizing */
+/* Pseudo elements are also included since it is not automatically selected. */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    /* Calculating widths & heights easier */
+}
+
+/* Reset margins */
+/* Can be used to battle "collapsing margins" */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+figure,
+picture {
+    margin: 0;
+}
+
+
+/* Design requires no bold to be used. */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-weight: 400;
+}
+
+
+/* Make images easier to work with */
+img,
+picture {
+    max-width: 100%;
+    /* display: block; */
+    /* This element has been commented out, since the "hidden" attribute won't work when display block is enabled. */
+}
+
+/* Make forms elements easier to work with */
+input,
+button,
+textarea,
+select {
+    font: inherit;
+    /* Default: font properties are not inherited for these elements */
+}
+
+/* Remove animations for people who've turned them off */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ---------------------------- */
+/*      CUSTOM PROPERTIES       */
+/* ---------------------------- */
+:root {
+    transition-behavior: allow-discrete;
+    /* Allow for discrete rules to be animatable. Copy this to the location where it is used. This property is not inherited.*/
+    interpolate-size: allow-keywords;
+    /* Allows for animating to height auto */
+
+    /* Colors */
+    /* -- Primary -- */
+    --clr-red: hsl(4, 100%, 67%);
+    --clr-pink: hsl(340, 100%, 67%);
+    --clr-red-pass: hsla(4, 100%, 67%, 0.2);
+
+    /* -- Neutral -- */
+    --clr-blue-800: hsl(234, 29%, 20%);
+    --clr-blue-700: hsl(235, 18%, 26%);
+    --clr-grey: hsl(0, 0%, 58%);
+    --clr-white: hsl(0, 0%, 100%);
+
+    /* Typography */
+    /* -- Body -- */
+    --fs-label: 0.75rem;
+    --fs-p: 1rem;
+    --fs-h1: clamp(2.5rem, 5vw, 4.5rem);
+    --fs-h2: clamp(2.5rem, 5vw, 3.25rem);
+
+    /* Font family */
+    --ff-Roboto : 'Roboto', sans-serif;
+
+    /* Font weights */
+    --fw-400: 400;
+    --fw-700: 700;
+
+    /* Border radius */
+    --br-def: 0.5rem;
+
+    /* Padding */
+    --pad-def: 1rem;
+
+}
+
+/* ---------------------------- */
+/*       UTILITY CLASSES        */
+/* ---------------------------- */
+.hidden {
+    display: none !important;
+}
+
+.error {
+    color: var(--clr-red);
+}
+
+.bold {
+    font-weight: var(--fw-700);
+}
+
+/* ---------------------------- */
+/*        PAGE SPECIFICS        */
+/* ---------------------------- */
+
+/* General */
+/* ------------------------------------------------ */
+body {
+    /* Set font family */
+    font-family: var(--ff-Roboto);
+    color: var(--clr-blue-800);
+    background-color: var(--clr-blue-700);
+
+
+    /* Set grid on outer container */
+    display: grid;
+    justify-items: center;
+    grid-template-rows: 1fr min-content;
+}
+
+main {
+    background-color: var(--clr-white);
+    
+    /* Set height to 100vh, since this is always the case */
+    height: 100vh;
+}
+
+h1 {
+    margin-block: 1rem;
+    font-size: var(--fs-h1);
+}
+
+h2 {
+    margin-block: 1rem;
+    font-size: var(--fs-h2);
+}
+
+button {
+    padding: 1.25rem;
+    border-radius: var(--br-def);
+    border: none;
+    background-color: var(--clr-blue-800);
+    color: var(--clr-white);
+    font-weight: var(--fw-700);
+    width: 100%;
+}
+
+button:hover,
+button:active,
+button:focus-visible {
+    background-image: linear-gradient( 90deg, var(--clr-pink) , var(--clr-red) );
+}
+
+/* ------------------------------------------------ */
+
+/* Form */
+/* ------------------------------------------------ */
+main section.email form {
+    padding: var(--pad-def);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+input[type="email"] {
+    padding: var(--pad-def);
+    border: 1px solid var(--clr-grey);
+    border-radius: var(--br-def);
+    width: 100%;
+}
+
+/* If input has error class */
+input[type="email"].error {
+    background-color: var(--clr-red-pass);
+    border: 1px solid var(--clr-red);
+}
+
+/* If input is selected */
+input[type="email"]:focus-visible,
+input[type="email"]:active {
+    outline: 1px solid black;
+}
+
+div:has(label) p,
+label {
+    font-size: var(--fs-label);
+}
+
+div:has(label) {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* To get the styling of the CSS items better. I have used the following link:
+URL: https://css.maxdesign.com.au/listamatic/vertical05.htm
+*/
+main section ul {
+    margin-left: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+main section li {
+    padding-block: 0.5rem;
+    padding-left: 2.5rem;
+    background-image: url(./assets/images/icon-list.svg);
+    background-repeat: no-repeat;
+    background-position: 0 0.5rem;
+}
+
+/* ------------------------------------------------ */
+
+/* Success message */
+/* ------------------------------------------------ */
+main section.success {
+    padding-inline: var(--pad-def);
+    padding-top: 10rem;
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 2rem;
+}
+
+main section.success .content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+/* ------------------------------------------------ */
+
+/* Media queries */
+/* ------------------------------------------------ */
+/* Tablet mode */
+@media (width > 375px) {
+    main section.email img {
+        content: url(./assets/images/illustration-sign-up-tablet.svg)
+    }
+}
+
+/* Desktop mode */
+@media (width > 528px) {
+
+    body {
+        height: 100vh;
+        align-items: center;
+    }
+
+    main {
+        height: auto;
+        padding: var(--pad-def);
+        border-radius: 2rem;
+    }
+    
+    /* Email submit section */
+    main section.email {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        gap: 1rem;
+    }
+
+    main section.email form {
+        grid-column: 1 / 2;
+        grid-row: 1;
+    }
+
+    main section.email img {
+        grid-column: 2 / -1;
+        grid-row: 1;
+
+        justify-self: flex-end;
+    }
+
+    main section.email img {
+        content: url(./assets/images/illustration-sign-up-desktop.svg)
+    }
+
+    /* Success section */
+    main section.success {
+        padding: 3rem;
+        max-width: 30rem;
+        gap: 2rem;
+    }
+
+}
+
+/* ------------------------------------------------ */
