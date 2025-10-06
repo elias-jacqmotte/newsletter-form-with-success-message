@@ -14,6 +14,8 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
   <link rel="stylesheet" href="style.css">
 
+  <script src="index.js" defer></script>
+
   <title>Frontend Mentor | Newsletter sign-up form with success message</title>
 
 </head>
@@ -38,10 +40,9 @@
 
         <div>
           <label class="bold" for="email">Email address</label>
-          <p class="error hidden">Valid email required</p>
+          <p class="error hidden" aria-live="polite">Valid email required</p>
         </div>
         <input id="email" name="email" type="email" required placeholder="email@company.com">
-
 
         <button type="submit">Subscribe to monthly newsletter</button>
       </form>
@@ -50,12 +51,12 @@
     <!-- Sign-up form end -->
 
     <!-- Success message start -->
-    <section class="success hidden">
+    <section class="success hidden" hidden>
       <div class="content">
         <img src="./assets/images/icon-success.svg" alt="Success" width="64px" height="64px">
         <h2 class="bold">Thanks for subscribing!</h2>
 
-        <p>A confirmation email has been sent to <span class="bold">ash@loremcompany.com</span>.
+        <p>A confirmation email has been sent to <span class="bold email"></span>.
           Please open it and click the button inside to confirm your subscription.</p>
       </div>
 
