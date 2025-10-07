@@ -257,7 +257,7 @@ main section ul {
 main section li {
     padding-block: 0.5rem;
     padding-left: 2.5rem;
-    background-image: url(./assets/images/icon-list.svg);
+    background-image: url(assets/images/icon-list.svg);
     background-repeat: no-repeat;
     background-position: 0 0.5rem;
 }
@@ -290,7 +290,7 @@ main section.success .content {
 /* Tablet mode */
 @media (width > 375px) {
     main section.email img {
-        content: url(./assets/images/illustration-sign-up-tablet.svg)
+        content: url(assets/images/illustration-sign-up-tablet.svg)
     }
 }
 
@@ -329,7 +329,7 @@ main section.success .content {
     }
 
     main section.email img {
-        content: url(./assets/images/illustration-sign-up-desktop.svg)
+        content: url(assets/images/illustration-sign-up-desktop.svg)
     }
 
     /* Success section */
