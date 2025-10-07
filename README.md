@@ -50,7 +50,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Github pages](https://your-live-site-url.com)
+- Live Site URL: [Github pages](https://elias-jacqmotte.github.io/newsletter-form-with-success-message/)
 
 ## My process
 
